@@ -135,28 +135,28 @@ export async function GET(request, { params }) {
 export async function DELETE(request, context) {
   try {
     const id = context.params.UserID;
-    console.log("Blog ID:", id);
+    console.log("User ID:", id);
 
     // Connect to the database
     await connect();
 
     // Find the blog by ID
     const user = await User.findById(id);
+    console.log("User:", user);
 
     if (!user) {
       return NextResponse.json({ message: "User not found", status: 404 });
     }
 
-    console.log("Blog:", user);
     const userPublicId = user.userPublicId; // Ensure this matches your schema
     console.log("Image Public ID:", userPublicId);
     const companyImageId = user.companyPublicId; // Ensure this matches your schema
     console.log("Image Public ID:", companyImageId);
 
     // Delete the blog from the database
-    const deletedBUser = await User.findByIdAndDelete(id);
+    const deletedUser = await User.findByIdAndDelete(id);
 
-    if (!deletedBUser) {
+    if (!deletedUser) {
       return NextResponse.json({
         message: "Failed to delete blog",
         status: 500,
@@ -164,13 +164,13 @@ export async function DELETE(request, context) {
     }
 
     // Delete the image from Cloudinary if publicId exists
-    if (userPublicId && companyPublicId) {
+    if (userPublicId && companyImageId) {
       try {
         const cloudinaryResponse1 = await cloudinary.v2.uploader.destroy(
           userPublicId
         );
         const cloudinaryResponse2 = await cloudinary.v2.uploader.destroy(
-          companyPublicId
+          companyImageId
         );
         console.log(`Cloudinary response: ${cloudinaryResponse1.result}`);
         console.log(`Cloudinary response: ${cloudinaryResponse2.result}`);
