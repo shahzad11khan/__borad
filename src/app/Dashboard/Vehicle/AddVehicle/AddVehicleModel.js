@@ -2,7 +2,6 @@
 import React, { useState } from "react";
 
 const AddVehicleModel = ({ isOpen, onClose }) => {
-  if (!isOpen) return null;
   const [vehicleData, setVehicleData] = useState({
     manufacturer: "",
     model: "",
@@ -59,6 +58,7 @@ const AddVehicleModel = ({ isOpen, onClose }) => {
     console.log(vehicleData);
     // Submit logic here
   };
+  if (!isOpen) return null;
 
   return (
     // <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50 z-50">

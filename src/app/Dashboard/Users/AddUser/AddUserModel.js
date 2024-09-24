@@ -2,8 +2,6 @@
 import React, { useState } from "react";
 
 const AddUserModel = ({ isOpen, onClose }) => {
-  if (!isOpen) return null;
-
   const [formData, setFormData] = useState({
     title: "",
     firstName: "",
@@ -53,6 +51,7 @@ const AddUserModel = ({ isOpen, onClose }) => {
       console.error("Error:", error);
     }
   };
+  if (!isOpen) return null;
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50 z-50">

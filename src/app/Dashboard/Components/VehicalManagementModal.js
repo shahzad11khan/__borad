@@ -1,9 +1,8 @@
+"use client";
 import React, { useEffect } from "react";
 import Link from "next/link";
 
 const VehicleModal = ({ isOpen, onClose, onMouseEnter, onMouseLeave }) => {
-  if (!isOpen) return null;
-
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (event.target.classList.contains("modal-background")) {
@@ -14,6 +13,8 @@ const VehicleModal = ({ isOpen, onClose, onMouseEnter, onMouseLeave }) => {
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [onClose]);
+
+  if (!isOpen) return null;
 
   return (
     <div

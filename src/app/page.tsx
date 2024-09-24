@@ -1,11 +1,11 @@
 "use client";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+// import { useRouter } from "next/navigation";
 import React from "react";
-import { toast } from "react-toastify";
+// import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-export default function Home() {
+export default function Page() {
   return (
     <div className="min-h-screen bg-gradient-to-r from-blue-400 to-purple-500 flex justify-center items-center">
       <form className="bg-transparent p-10 rounded-xl shadow-xl w-96">

@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import DataTable from "react-data-table-component";
 import Header from "../../../Components/Header";
 import Sidebar from "../../../Components/Sidebar";
-import { toast } from "react-toastify";
+// import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import AddBadgemodel from "../AddBadge/AddBadgeModel";
@@ -29,16 +29,16 @@ const columns = [
   },
   {
     name: "Actions",
-    cell: (row) => (
+    cell: () => (
       <div className="flex gap-2">
         <button
-          onClick={() => handleEdit(row.id)}
+          // onClick={() => handleEdit(row.id)}
           className="text-blue-500 hover:text-blue-700"
         >
           <FaEdit />
         </button>
         <button
-          onClick={() => handleDelete(row.id)}
+          // onClick={() => handleDelete(row.id)}
           className="text-red-500 hover:text-red-700"
         >
           <FaTrash />
@@ -67,15 +67,15 @@ const Page = () => {
       item.title && item.title.toLowerCase().includes(searchTerm.toLowerCase())
     );
   });
-  const handleEdit = (id) => {
-    toast.info(`Edit item with ID: ${id}`);
-    // Implement your edit logic here
-  };
+  // const handleEdit = (id) => {
+  //   toast.info(`Edit item with ID: ${id}`);
+  //   // Implement your edit logic here
+  // };
 
-  const handleDelete = (id) => {
-    toast.info(`Delete item with ID: ${id}`);
-    // Implement your delete logic here
-  };
+  // const handleDelete = (id) => {
+  //   toast.info(`Delete item with ID: ${id}`);
+  //   // Implement your delete logic here
+  // };
   if (!isMounted) {
     return null; // Render nothing until the component is mounted
   }

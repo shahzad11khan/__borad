@@ -2,8 +2,6 @@
 import React, { useState } from "react";
 
 const AddTitleModel = ({ isOpen, onClose }) => {
-  if (!isOpen) return null;
-
   const [formData, setFormData] = useState({
     name: "",
   });
@@ -22,6 +20,7 @@ const AddTitleModel = ({ isOpen, onClose }) => {
     // Implement the API call here to submit the form data to the backend
     // Example: axios.post('/api/title', formData);
   };
+  if (!isOpen) return null;
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50 z-50">

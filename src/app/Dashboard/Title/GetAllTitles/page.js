@@ -1,9 +1,9 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { toast } from "react-toastify";
+// import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { FaEdit, FaTrash } from "react-icons/fa";
+import { FaTrash } from "react-icons/fa";
 import Header from "../../Components/Header";
 import Sidebar from "../../Components/Sidebar";
 import DataTableComponent from "../../Components/CustomDataTable";
@@ -25,7 +25,7 @@ const columns = [
 
   {
     name: "Actions",
-    cell: (row) => (
+    cell: () => (
       <div className="flex gap-2">
         {/* <button
           onClick={() => handleEdit(row.id)}
@@ -34,7 +34,7 @@ const columns = [
           <FaEdit />
         </button> */}
         <button
-          onClick={() => handleDelete(row.id)}
+          // onClick={() => handleDelete(row.id)}
           className="text-red-500 hover:text-red-700"
         >
           <FaTrash />
@@ -67,9 +67,9 @@ const Page = () => {
   //   toast.info(`Edit item with ID: ${id}`);
   // };
 
-  const handleDelete = (id) => {
-    toast.info(`Delete item with ID: ${id}`);
-  };
+  // const handleDelete = (id) => {
+  //   toast.info(`Delete item with ID: ${id}`);
+  // };
 
   const toggleTitleModal = () => {
     setIsOpenTitle(!isOpenTitle);

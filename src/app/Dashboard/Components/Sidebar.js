@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link"; // Import Link from Next.js
 import { FaHome } from "react-icons/fa";
 import { IoPersonAdd } from "react-icons/io5";
@@ -11,13 +11,21 @@ import { GrSystem } from "react-icons/gr";
 import { RiOrganizationChart } from "react-icons/ri";
 import FavouriteModal from "./FavouritesModal.js";
 const Sidebar = () => {
-  const modalRef = useRef(null);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const [isOpenReport, setIsOpenReport] = useState(false);
   const [isOpenManagement, setIsOpenManagement] = useState(false);
   const [isOpenFavouriteModal, setIsOpenFavouriteModal] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState(null); // State to track which dropdown is open
+  const [activeLink, setActiveLink] = useState("/Dashboard/Home");
+  useEffect(() => {
+    // This will run only once after the initial render
+    const path = window.location.pathname;
+    setActiveLink(path);
+  }, []);
+
+  const handleLinkClick = (path) => {
+    setActiveLink(path);
+  };
 
   // Helper functions to handle hover
   const handleMouseEnter = (dropdown) => {
@@ -40,92 +48,193 @@ const Sidebar = () => {
     <div className="relative ">
       {/* Hamburger Button */}
       <button
-        className="fixed top-4 left-4 z-50 block lg:hidden text-xl"
+        className="fixed top-3 left-4 z-50 block lg:hidden text-sm"
         onClick={handleToggleSidebar}
       >
         {isSidebarOpen ? "✖" : "☰"}
       </button>
       {/* Sidebar */}
       <aside
-        className={`bg-white text-black h-full lg:w-72 w-20 transition-transform duration-300 ease-in-out ${
+        className={`bg-white text-black h-full lg:w-52 w-20 transition-transform duration-300 ease-in-out ${
           isSidebarOpen ? "translate-x-0" : "-translate-x-full"
         } lg:translate-x-0 fixed lg:relative top-0 left-0 flex flex-col shadow-2xl  mt-1 shadow-custom-blue`}
       >
         <nav className="flex-1">
           <ul className="space-y-1">
             <Link passHref href="/Dashboard/Home">
-              <li className="flex items-center p-4 cursor-pointer hover:bg-gray-100 rounded-lg">
+              <li
+                onClick={() => handleLinkClick("/Dashboard/Home")}
+                className={`${
+                  activeLink === "/Dashboard/Home"
+                    ? "border-l-4 border-red-400"
+                    : "bg-white text-blue"
+                } flex items-center p-3 cursor-pointer hover:bg-gray-100 rounded-lg`}
+              >
                 <div className="flex items-center gap-3">
-                  <FaHome className="text-black text-xl" />
-                  <span className="hidden sm:block">Dashboard</span>
+                  <FaHome
+                    className={`${
+                      activeLink === "/Dashboard/Home"
+                        ? "text-red-400"
+                        : "text-black text-sm"
+                    }`}
+                  />
+                  <span className="hidden sm:block text-sm">Dashboard</span>
                 </div>
               </li>
             </Link>
 
             <Link passHref href="/Dashboard/Company/GetAllCompanies">
-              <li className="flex items-center p-4 cursor-pointer hover:bg-gray-100 rounded-lg">
+              <li
+                onClick={() =>
+                  handleLinkClick("/Dashboard/Company/GetAllCompanies")
+                }
+                className={`${
+                  activeLink === "/Dashboard/Company/GetAllCompanies"
+                    ? "border-l-4 border-red-400"
+                    : "bg-white text-blue"
+                } flex items-center p-3 cursor-pointer hover:bg-gray-100 rounded-lg`}
+              >
                 <div className="flex items-center gap-3">
-                  <FaHouseLaptop className="text-black text-xl" />
-                  <span className="hidden sm:block">Registered Companies</span>
+                  <FaHouseLaptop
+                    className={`${
+                      activeLink === "/Dashboard/Company/GetAllCompanies"
+                        ? "text-red-400"
+                        : "text-black text-sm"
+                    }`}
+                  />
+                  <span className="hidden sm:block text-sm">
+                    Registered Companies
+                  </span>
                 </div>
               </li>
             </Link>
 
             <Link passHref href="/Dashboard/Title/GetAllTitles">
-              <li className="flex items-center p-4 cursor-pointer hover:bg-gray-100 rounded-lg">
+              <li
+                onClick={() => handleLinkClick("/Dashboard/Title/GetAllTitles")}
+                className={`${
+                  activeLink === "/Dashboard/Title/GetAllTitles"
+                    ? "border-l-4 border-red-400"
+                    : "bg-white text-blue"
+                } flex items-center p-3 cursor-pointer hover:bg-gray-100 rounded-lg`}
+              >
                 <div className="flex items-center gap-3">
-                  <GrSystem className="text-black text-xl" />
-                  <span className="hidden sm:block">System</span>
+                  <GrSystem
+                    className={`${
+                      activeLink === "/Dashboard/Title/GetAllTitles"
+                        ? "text-red-400"
+                        : "text-black text-sm"
+                    }`}
+                  />
+                  <span className="hidden sm:block text-sm">System</span>
                 </div>
               </li>
             </Link>
 
             <Link passHref href={"/Dashboard/Users/GetAllusers"}>
-              <li className="flex items-center p-4 cursor-pointer hover:bg-gray-100 rounded-lg">
+              <li
+                onClick={() => handleLinkClick("/Dashboard/Users/GetAllusers")}
+                className={`${
+                  activeLink === "/Dashboard/Users/GetAllusers"
+                    ? "border-l-4 border-red-400"
+                    : "bg-white text-blue"
+                } flex items-center p-3 cursor-pointer hover:bg-gray-100 rounded-lg`}
+              >
                 <div className="flex items-center gap-3">
-                  <RiOrganizationChart className="text-black text-xl" />
-                  <span className="hidden sm:block">Organization</span>
+                  <RiOrganizationChart
+                    className={`${
+                      activeLink === "/Dashboard/Users/GetAllusers"
+                        ? "text-red-400"
+                        : "text-black text-sm"
+                    }`}
+                  />
+                  <span className="hidden sm:block text-sm">Organization</span>
                 </div>
               </li>
             </Link>
 
             <Link passHref href="/Dashboard/Driver/GetAllDrivers">
-              <li className="flex items-center p-4 cursor-pointer hover:bg-gray-100 rounded-lg">
+              <li
+                onClick={() =>
+                  handleLinkClick("/Dashboard/Driver/GetAllDrivers")
+                }
+                className={`${
+                  activeLink === "/Dashboard/Driver/GetAllDrivers"
+                    ? "border-l-4 border-red-400"
+                    : "bg-white text-blue"
+                } flex items-center p-3 cursor-pointer hover:bg-gray-100 rounded-lg`}
+              >
                 <div className="flex items-center gap-3">
-                  <IoPersonAdd className="text-black text-xl" />
-                  <span className="hidden sm:block">Driver</span>
+                  <IoPersonAdd
+                    className={`${
+                      activeLink === "/Dashboard/Driver/GetAllDrivers"
+                        ? "text-red-400"
+                        : "text-black text-sm"
+                    }`}
+                  />
+                  <span className="hidden sm:block text-sm ">Driver</span>
                 </div>
               </li>
             </Link>
 
-            <Link
-              passHref
-              href="/Dashboard/Vehicle/GetAllVehicle"
-              onClose={() => setIsOpenReport(false)}
-            >
-              <li className="flex items-center p-4 cursor-pointer hover:bg-gray-100 rounded-lg">
+            <Link passHref href="/Dashboard/Vehicle/GetAllVehicle">
+              <li
+                onClick={() =>
+                  handleLinkClick("/Dashboard/Vehicle/GetAllVehicle")
+                }
+                className={`${
+                  activeLink === "/Dashboard/Vehicle/GetAllVehicle"
+                    ? "border-l-4 border-red-400"
+                    : "bg-white text-blue"
+                } flex items-center p-3 cursor-pointer hover:bg-gray-100 rounded-lg`}
+              >
                 <div className="flex items-center gap-3">
-                  <FaCar className="text-black text-xl" />
-                  <span className="hidden sm:block">Vehicle</span>
+                  <FaCar
+                    className={`${
+                      activeLink === "/Dashboard/Vehicle/GetAllVehicle"
+                        ? "text-red-400"
+                        : "text-black text-sm"
+                    }`}
+                  />
+                  <span className="hidden sm:block text-sm">Vehicle</span>
                 </div>
               </li>
             </Link>
 
             <div>
               <li
-                className="flex items-center p-4 cursor-pointer hover:bg-gray-100 rounded-lg"
+                // className="flex items-center p-3 cursor-pointer hover:bg-gray-100 rounded-lg"
                 onMouseEnter={() => setIsOpenManagement(true)}
                 onMouseLeave={() => setIsOpenManagement(false)}
+                className={`${
+                  isOpenManagement === true
+                    ? "border-l-4 border-red-400"
+                    : "bg-white text-blue"
+                } flex items-center p-3 cursor-pointer hover:bg-gray-100 rounded-lg relative`}
               >
                 <div className="flex items-center gap-3 relative">
-                  <FaCar className="text-black text-xl" />
-                  <MdManageSearch className="text-black text-xl" />
-                  <span className="hidden sm:block">Vehicle Management</span>
+                  <FaCar
+                    className={`${
+                      isOpenManagement === true
+                        ? "text-red-400"
+                        : "text-black text-sm"
+                    }`}
+                  />
+                  <MdManageSearch
+                    className={`${
+                      isOpenManagement === true
+                        ? "text-red-400"
+                        : "text-black text-sm"
+                    }`}
+                  />
+                  <span className="hidden sm:block text-sm">
+                    Vehicle Management
+                  </span>
 
                   {/* Dropdown Menu */}
                   {isOpenManagement && (
-                    <div className="absolute left-2 ml-20 mt-2 w-[200px] bg-white border border-gray-300 rounded-md shadow-lg z-10">
-                      <ul className="grid grid-cols-1 space-y-1 p-2">
+                    <div className="absolute left-0 ml-4 mt-2 w-full sm:w-[200px] bg-white border border-gray-300 rounded-md shadow-lg z-50">
+                      <ul className="grid grid-cols-1 space-y-1 p-3">
                         <li>
                           <Link
                             href="/Dashboard/Models/Manufacturer/GetManufacturers"
@@ -224,12 +333,21 @@ const Sidebar = () => {
             {/*  */}
             <div className="">
               <li
-                className="flex items-center p-4 cursor-pointer hover:bg-gray-100 rounded-lg"
+                // className="flex items-center p-3 cursor-pointer hover:bg-gray-100 rounded-lg"
                 onMouseEnter={() => setIsOpen(true)}
                 onMouseLeave={() => setIsOpen(false)}
+                className={`${
+                  isOpen === true
+                    ? "border-l-4 border-red-400"
+                    : "bg-white text-blue"
+                } flex items-center p-3 cursor-pointer hover:bg-gray-100 rounded-lg`}
               >
-                <TbReport className="text-black text-xl" />
-                <div className="relative inline-block">
+                <TbReport
+                  className={`${
+                    isOpen === true ? "text-red-400" : "text-black text-sm"
+                  }`}
+                />
+                <div className="relative inline-block text-sm">
                   <span className="items-center cursor-pointer hover:bg-gray-100 rounded-lg hidden sm:block ml-2">
                     Reports
                   </span>
@@ -388,9 +506,9 @@ const Sidebar = () => {
             {/*  */}
 
             <Link passHref href="#">
-              <li className="flex items-center p-4 cursor-pointer  rounded-lg">
+              <li className="flex items-center p-3 cursor-pointer  rounded-lg">
                 <div className="flex items-center gap-3">
-                  <MdFavorite className="text-black text-xl" />
+                  <MdFavorite className="text-black text-sm" />
                   <span className="hidden sm:block">Favourites</span>
                 </div>
               </li>

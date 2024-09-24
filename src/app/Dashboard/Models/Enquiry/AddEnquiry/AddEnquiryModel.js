@@ -2,8 +2,6 @@
 import React, { useState } from "react";
 
 const AddEnquiryModal = ({ isOpen, onClose }) => {
-  if (!isOpen) return null;
-
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -49,6 +47,7 @@ const AddEnquiryModal = ({ isOpen, onClose }) => {
       console.error("Error:", error);
     }
   };
+  if (!isOpen) return null;
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50 z-50">

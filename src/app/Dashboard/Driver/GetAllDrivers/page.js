@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Header from "../../Components/Header";
 import Sidebar from "../../Components/Sidebar";
-import { toast } from "react-toastify";
+// import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { FaEdit, FaTrash, FaEye } from "react-icons/fa"; // Added FaEye for the preview button
 import AddDriverModel from "../AddDriver/AddDriverModel";
@@ -81,22 +81,22 @@ const columns = [
   },
   {
     name: "Actions",
-    cell: (row) => (
+    cell: () => (
       <div className="flex gap-2">
         <button
-          onClick={() => handleEdit(row.id)}
+          // onClick={() => handleEdit(row.id)}
           className="text-blue-500 hover:text-blue-700"
         >
           <FaEdit />
         </button>
         <button
-          onClick={() => handlePreview(row.id)}
+          // onClick={() => handlePreview(row.id)}
           className="text-green-500 hover:text-green-700"
         >
           <FaEye />
         </button>
         <button
-          onClick={() => handleDelete(row.id)}
+          // onClick={() => handleDelete(row.id)}
           className="text-red-500 hover:text-red-700"
         >
           <FaTrash />
@@ -127,20 +127,20 @@ const Page = () => {
     );
   });
 
-  const handleEdit = (id) => {
-    toast.info(`Edit driver with ID: ${id}`);
-    // Implement your edit logic here
-  };
+  // const handleEdit = (id) => {
+  //   toast.info(`Edit driver with ID: ${id}`);
+  //   // Implement your edit logic here
+  // };
 
-  const handlePreview = (id) => {
-    toast.info(`Preview driver with ID: ${id}`);
-    // Implement your preview logic here
-  };
+  // const handlePreview = (id) => {
+  //   toast.info(`Preview driver with ID: ${id}`);
+  //   // Implement your preview logic here
+  // };
 
-  const handleDelete = (id) => {
-    toast.info(`Delete driver with ID: ${id}`);
-    // Implement your delete logic here
-  };
+  // const handleDelete = (id) => {
+  //   toast.info(`Delete driver with ID: ${id}`);
+  //   // Implement your delete logic here
+  // };
 
   if (!isMounted) {
     return null; // Render nothing until the component is mounted

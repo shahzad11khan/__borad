@@ -1,37 +1,27 @@
 "use client";
-import React, { useEffect, useState, useCallback } from "react";
-import { FaUserCircle } from "react-icons/fa";
-import { FaCar } from "react-icons/fa";
-import { TbReport } from "react-icons/tb";
+import React from "react";
 import { Chart, registerables } from "chart.js";
 import Header from "../Components/Header.js";
 import Sidebar from "../Components/Sidebar.js";
 // import { isAuthenticated } from "@/app/helper/verifytoken";
-import { useRouter } from "next/navigation";
-import { GrUserAdmin } from "react-icons/gr";
-import { FaPeopleGroup, FaNotesMedical } from "react-icons/fa6";
+import { LuBarChart2 } from "react-icons/lu";
+// import { useRouter } from "next/navigation";
+import { CiWavePulse1 } from "react-icons/ci";
+import { FaChartLine } from "react-icons/fa";
 import { RiFolderReceivedFill } from "react-icons/ri";
 import HeroSection from "../Components/HeroSection";
+import Image from "next/image.js";
 const Page = () => {
   Chart.register(...registerables);
-  const [counts, setCounts] = useState({
+  const counts = {
     admins: 0,
     team: 0,
     vacancies: 0,
     getInTouch: 0,
     requests: 0,
-  });
-
-  const router = useRouter();
-
-  const data = {
-    labels: ["January", "February", "March", "April", "May", "June", "July"],
-    values: [65, 59, 80, 81, 56, 55, 70], // Sample data values
   };
-  const data1 = {
-    labels: ["January", "February", "March", "April", "May", "June", "July"],
-    values: [50, 65, 84, 65, 87, 46, 70], // Sample data values
-  };
+
+  // const router = useRouter();
 
   return (
     <>
@@ -43,46 +33,72 @@ const Page = () => {
           <section className="grid grid-cols-5 min-w-full justify-between gap-2 text-center rounded-xl">
             {[
               {
-                icon: <GrUserAdmin size={30} />,
-                title: "All Registered Companies",
+                icon: <LuBarChart2 size={30} />,
+                title: "Companies",
                 count: counts.admins,
-                gradient: "bg-gradient-to-r from-blue-200 to-blue-700",
+                gradient: "bg-gradient-to-r",
+                style: {
+                  backgroundImage:
+                    "linear-gradient(to right, #E64B87, #B35A9E)", // replace with your desired hex colors
+                },
               },
               {
-                icon: <FaPeopleGroup size={30} />,
+                icon: <FaChartLine size={30} />,
+
                 title: "Customers",
                 count: counts.team,
-                gradient: "bg-gradient-to-r from-green-700 to-green-400",
+                gradient: "bg-gradient-to-r",
+                style: {
+                  backgroundImage:
+                    "linear-gradient(to right, #8461BF, #4F4699)", // replace with your desired hex colors
+                },
               },
               {
-                icon: <FaCar size={30} />,
+                icon: <CiWavePulse1 size={30} />,
                 title: "Vehicles",
                 count: counts.vacancies,
-                gradient: "bg-gradient-to-r from-red-400 to-red-200",
+                gradient: "bg-gradient-to-r",
+                style: {
+                  backgroundImage:
+                    "linear-gradient(to right, #47C2FF, #6893D8)", // replace with your desired hex colors
+                },
               },
               {
-                icon: <TbReport size={30} />,
+                icon: <LuBarChart2 size={30} />,
                 title: "Reports",
                 count: counts.getInTouch,
-                gradient: "bg-gradient-to-r from-yellow-500 to-yellow-200",
+                gradient: "bg-gradient-to-r",
+                style: {
+                  backgroundImage:
+                    "linear-gradient(to right, #47C2FF, #6893D8)", // replace with your desired hex colors
+                },
               },
               {
                 icon: <RiFolderReceivedFill size={30} />,
                 title: "Requests",
                 count: counts.requests,
-                gradient: "bg-gradient-to-r from-purple-800 to-purple-600",
+                gradient: "bg-gradient-to-r",
+                style: {
+                  backgroundImage:
+                    "linear-gradient(to right, #FFB72D, #F38459)", // replace with your desired hex colors
+                },
               },
             ].map((item, index) => (
               <div
                 key={index}
                 className={`border-2 shadow-sm shadow-custom-blue rounded-md py-3 ${item.gradient}`}
+                style={item.style}
               >
-                <div className="flex items-center flex-col sm:flex-row gap-4 justify-center">
-                  <div className="flex flex-col items-center gap-2 justify-center">
-                    <span>{item.icon}</span>
+                <div className="flex items-center flex-col sm:flex-row gap-4 justify-start ml-3 text-white">
+                  <div
+                    className={`flex flex-col items-start gap-2 justify-start`}
+                  >
                     <span className="text-xs">{item.title}</span>
+                    <span className="text-start">{item.icon}</span>
                   </div>
-                  <span className="text-2xl">{item.count}</span>
+                  <span className="text-2xl">
+                    <stong> $</stong> {item.count}
+                  </span>
                 </div>
               </div>
             ))}
@@ -90,52 +106,49 @@ const Page = () => {
 
           <section className="flex gap-4 min-w-full justify-between mt-4 ">
             {/* First Container - Customer Data */}
-            <div className="flex flex-col w-3/6 bg-gray-100 p-4 rounded-md shadow">
-              <h2 className="text-lg font-semibold mb-2">Messages</h2>
-              <ul className="list-disc ml-5">
-                <li className="flex items-center">
-                  <img
+            <div className="flex flex-col w-3/6  p-4 rounded-md shadow">
+              <h2 className="text-lg font-semibold mb-2">Drivers</h2>
+              <ul className="space-y-4">
+                <li className="flex items-start">
+                  <Image
                     src="/image.jpg" // replace with actual image path
-                    alt="Oliver Smith"
-                    className="w-8 h-8 rounded-full mr-3"
+                    alt="John Smith"
+                    className="w-10 h-10 rounded-full"
                   />
-                  <strong>Username: Oliver Smith</strong>
-                  <p className="ml-4 text-sm">
-                    Good morning! How’s everything going?
-                  </p>
+                  <div className="ml-4">
+                    <strong className="text-lg block">John Smith</strong>
+                    <p className="text-sm text-gray-600">
+                      Is the Driver of BMW.
+                    </p>
+                  </div>
                 </li>
-                <li className="flex items-center mt-2">
-                  <img
+
+                <li className="flex items-start">
+                  <Image
                     src="/image.jpg" // replace with actual image path
-                    alt="Emily Johnson"
-                    className="w-8 h-8 rounded-full mr-3"
+                    alt="Emma Johnson"
+                    className="w-10 h-10 rounded-full"
                   />
-                  <strong> Emily Johnson</strong>
-                  <p className="ml-4 text-sm">
-                    Don’t forget our meeting this afternoon.
-                  </p>
+                  <div className="ml-4">
+                    <strong className="text-lg block">Emma Johnson</strong>
+                    <p className="text-sm text-gray-600">
+                      Is the Driver of Honda.
+                    </p>
+                  </div>
                 </li>
-                <li className="flex items-center mt-2">
-                  <img
+
+                <li className="flex items-start">
+                  <Image
                     src="/image.jpg" // replace with actual image path
-                    alt="James Wilson"
-                    className="w-8 h-8 rounded-full mr-3"
+                    alt="David Brown"
+                    className="w-10 h-10 rounded-full"
                   />
-                  <strong> James Wilson</strong>
-                  <p className="ml-4 text-sm">
-                    I’ve forwarded the contract to you.
-                  </p>
-                </li>
-                <li className="flex items-center mt-2">
-                  <img
-                    src="/image.jpg" // replace with actual image path
-                    alt="Sophie Taylor"
-                    className="w-8 h-8 rounded-full mr-3"
-                  />
-                  <strong> Sophie Taylor</strong>
-                  <p className="ml-4 text-sm">
-                    Could we reschedule for tomorrow?
-                  </p>
+                  <div className="ml-4">
+                    <strong className="text-lg block">David Brown</strong>
+                    <p className="text-sm text-gray-600">
+                      Is the Driver of Toyota.
+                    </p>
+                  </div>
                 </li>
               </ul>
             </div>
@@ -143,9 +156,12 @@ const Page = () => {
             {/* Second Container - User Table */}
             <div className="w-full bg-white p-4 rounded-md shadow">
               <h2 className="text-lg font-semibold mb-2">User Table</h2>
+              <h2 className="text-xm text-gray-600 font-semibold mb-2">
+                Register User In Website
+              </h2>
               <table className="min-w-full border-collapse">
                 <thead>
-                  <tr className="bg-gray-200">
+                  <tr className="bg-slate-950 text-white">
                     <th className="border px-4 py-2">User Name</th>
                     <th className="border px-4 py-2">Email</th>
                     <th className="border px-4 py-2">Is Active</th>
