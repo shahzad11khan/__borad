@@ -89,7 +89,11 @@ const Page = () => {
                 className={`border-2 shadow-sm shadow-custom-blue rounded-md py-3 ${item.gradient}`}
                 style={item.style}
               >
-                <div className="flex items-center flex-col sm:flex-row gap-4 justify-start ml-3 text-white">
+                <div
+                  key={index}
+                  className={`flex items-center flex-col sm:flex-row gap-4 justify-start ml-3 text-white ${item.gradient}`}
+                  style={item.style}
+                >
                   <div
                     className={`flex flex-col items-start gap-2 justify-start`}
                   >
