@@ -90,14 +90,16 @@ const Page = () => {
                 style={item.style}
               >
                 <div
-                  key={index}
-                  className={`flex items-center flex-col sm:flex-row gap-4 justify-start ml-3 text-white ${item.gradient}`}
-                  style={item.style}
+                  // key={index}
+                  className={`flex items-center flex-col sm:flex-row gap-4 justify-start ml-3 text-white`}
+                  // style={item.style}
                 >
                   <div
                     className={`flex flex-col items-start gap-2 justify-start`}
                   >
-                    <span className="text-xs">{item.title}</span>
+                    <span key={index} className={`text-xs`}>
+                      {item.title}
+                    </span>
                     <span className="text-start">{item.icon}</span>
                   </div>
                   <span className="text-2xl">
@@ -118,6 +120,8 @@ const Page = () => {
                     src="/image.jpg" // replace with actual image path
                     alt="John Smith"
                     className="w-10 h-10 rounded-full"
+                    width={100}
+                    height={100}
                   />
                   <div className="ml-4">
                     <strong className="text-lg block">John Smith</strong>
@@ -132,6 +136,8 @@ const Page = () => {
                     src="/image.jpg" // replace with actual image path
                     alt="Emma Johnson"
                     className="w-10 h-10 rounded-full"
+                    width={100}
+                    height={100}
                   />
                   <div className="ml-4">
                     <strong className="text-lg block">Emma Johnson</strong>
@@ -146,6 +152,8 @@ const Page = () => {
                     src="/image.jpg" // replace with actual image path
                     alt="David Brown"
                     className="w-10 h-10 rounded-full"
+                    width={100}
+                    height={100}
                   />
                   <div className="ml-4">
                     <strong className="text-lg block">David Brown</strong>

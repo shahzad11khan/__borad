@@ -1,10 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-*{
+/* *{
   background-color: #ffffff;
   color: #0a0a0a
-}
+} */
 
 :root {
   --background: #ffffff;
