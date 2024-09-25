@@ -367,11 +367,11 @@ const Sidebar = () => {
                             System Reports
                           </Link>
                           {openDropdown === "systemReports" && (
-                            <ul className="absolute left-5 mt-1 w-[260px] bg-white border border-gray-300 rounded-md shadow-lg space-y-2  z-50">
+                            <ul className="absolute left-5 mt-1 w-[200px] rounded-md shadow-lg space-y-4 z-50">
                               <li>
                                 <Link
                                   href="#"
-                                  className="px-4 py-2 rounded hover:bg-gray-200"
+                                  className="px-4 py-3  rounded hover:bg-gray-200"
                                 >
                                   Employee Update Reports
                                 </Link>
@@ -379,7 +379,7 @@ const Sidebar = () => {
                               <li>
                                 <Link
                                   href="#"
-                                  className="px-4 py-2 rounded hover:bg-gray-200"
+                                  className="px-4 py-3 rounded hover:bg-gray-200"
                                 >
                                   Rental Invoice Reports
                                 </Link>
@@ -387,7 +387,7 @@ const Sidebar = () => {
                               <li>
                                 <Link
                                   href="#"
-                                  className="px-4 py-2 rounded hover:bg-gray-200"
+                                  className="px-4 py-3 rounded hover:bg-gray-200"
                                 >
                                   Overdue Payment Reports
                                 </Link>
@@ -411,11 +411,11 @@ const Sidebar = () => {
                             Vehicle Reports
                           </Link>
                           {openDropdown === "vehicleReports" && (
-                            <ul className="absolute mt-1 w-[180px] bg-white border border-gray-300 rounded-md shadow-lg space-y-2  z-50">
+                            <ul className="absolute mt-1 w-[180px]  rounded-md shadow-lg space-y-4  z-50">
                               <li>
                                 <Link
                                   href="#"
-                                  className="px-4 py-2 rounded hover:bg-gray-200"
+                                  className="px-4 py-3 rounded hover:bg-gray-200"
                                 >
                                   Interim Test Expiry
                                 </Link>
@@ -423,7 +423,7 @@ const Sidebar = () => {
                               <li>
                                 <Link
                                   href="#"
-                                  className="px-4 py-2 rounded hover:bg-gray-200"
+                                  className="px-4 py-3 rounded hover:bg-gray-200"
                                 >
                                   Mot Expiry
                                 </Link>
@@ -431,7 +431,7 @@ const Sidebar = () => {
                               <li>
                                 <Link
                                   href="#"
-                                  className="px-4 py-2 rounded hover:bg-gray-200"
+                                  className="px-4 py-3 rounded hover:bg-gray-200"
                                 >
                                   Road Tax Expiry
                                 </Link>
@@ -468,12 +468,13 @@ const Sidebar = () => {
                           >
                             Driver Reports
                           </Link>
+
                           {openDropdown === "driverReports" && (
-                            <ul className="absolute left-0 ml-15  w-[180px] bg-white border border-gray-300 rounded-md shadow-lg  z-50">
+                            <ul className="absolute left-5 mt-1 w-[150px] bg-white rounded-md shadow-lg space-y-4 z-50">
                               <li>
                                 <Link
                                   href="#"
-                                  className="px-4 py-1 rounded hover:bg-gray-200"
+                                  className="px-4 py-3 rounded hover:bg-gray-200"
                                 >
                                   Drivers Holidays
                                 </Link>
@@ -481,7 +482,7 @@ const Sidebar = () => {
                               <li>
                                 <Link
                                   href="#"
-                                  className="px-4 py-2 rounded hover:bg-gray-200"
+                                  className="px-4 py-3 rounded hover:bg-gray-200"
                                 >
                                   Licence Expiry
                                 </Link>
@@ -489,7 +490,7 @@ const Sidebar = () => {
                               <li>
                                 <Link
                                   href="#"
-                                  className="px-4 py-2 rounded hover:bg-gray-200"
+                                  className="px-4 py-3 rounded hover:bg-gray-200"
                                 >
                                   Taxi Badge Expiry
                                 </Link>

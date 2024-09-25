@@ -164,7 +164,7 @@ const Page = () => {
 
                     <span
                       className={`text-start text-white`}
-                      style={{ backgroundColor: "transparent" }}
+                      style={{ backgroundColor: "transparent", color: "white" }}
                     >
                       {item.icon}
                     </span>

@@ -16,7 +16,7 @@ const HeroSection = () => {
   };
 
   const donutData = {
-    labels: [" cars on hire", "cars in repair", "cars waiting to go on hire"],
+    labels: ["cars on hire", "cars in repair", "cars waiting to go on hire"],
     datasets: [
       {
         data: [300, 50, 100],
