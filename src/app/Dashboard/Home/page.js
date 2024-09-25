@@ -135,6 +135,7 @@ const Page = () => {
                     size={30}
                     style={{
                       background: "#FFB72D",
+                      color: "white",
                     }}
                   />
                 ),
@@ -142,25 +143,32 @@ const Page = () => {
             ].map((item, index) => (
               <div
                 key={index}
-                className={`border-2 shadow-sm shadow-custom-blue rounded-md py-3 ${item.gradient}`}
+                className={`border-2 shadow-sm shadow-custom-blue rounded-md py-3 ${item.gradient} text-white`}
                 style={item.style}
               >
                 <div
                   // key={index}
-                  className={`flex items-center flex-col sm:flex-row gap-4 justify-start ml-3 text-white `}
+                  className={`flex items-center flex-col sm:flex-row gap-4 justify-start ml-3`}
                   style={item.style}
                 >
                   <div
-                    className={`flex flex-col items-start gap-2 justify-start`}
+                    className={`flex flex-col items-start gap-2 justify-starttext-white`}
                     style={item.colorx}
                   >
-                    <span className={`font-medium`} style={item.colorx}>
+                    <span
+                      className={`font-medium text-white`}
+                      style={item.colorx}
+                    >
                       {item.title}
                     </span>
-                    <span className={`text-start`}>{item.icon}</span>
+                    <span className={`text-start text-white`}>{item.icon}</span>
                   </div>
-                  <span className="text-2xl" style={item.colorx}>
-                    <stong style={item.colorx}> $</stong> {item.count}
+                  <span className="text-2xl text-white" style={item.colorx}>
+                    <stong style={item.colorx} className={`text-white`}>
+                      {" "}
+                      $
+                    </stong>{" "}
+                    {item.count}
                   </span>
                 </div>
               </div>
