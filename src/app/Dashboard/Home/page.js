@@ -33,9 +33,20 @@ const Page = () => {
           <section className="grid grid-cols-5 min-w-full justify-between gap-2 text-center rounded-xl">
             {[
               {
-                icon: <LuBarChart2 size={30} />,
+                icon: (
+                  <LuBarChart2
+                    size={30}
+                    style={{
+                      background: "#E64B87",
+                    }}
+                  />
+                ),
                 title: "Companies",
                 count: counts.admins,
+                colorx: {
+                  background: "#E64B87",
+                  // replace with your desired hex colors
+                },
                 gradient: "bg-gradient-to-r",
                 style: {
                   backgroundImage:
@@ -43,10 +54,21 @@ const Page = () => {
                 },
               },
               {
-                icon: <FaChartLine size={30} />,
+                icon: (
+                  <FaChartLine
+                    size={30}
+                    style={{
+                      background: "#8461BF",
+                    }}
+                  />
+                ),
 
                 title: "Customers",
                 count: counts.team,
+                colorx: {
+                  background: "#8461BF",
+                  // replace with your desired hex colors
+                },
                 gradient: "bg-gradient-to-r",
                 style: {
                   backgroundImage:
@@ -54,9 +76,20 @@ const Page = () => {
                 },
               },
               {
-                icon: <CiWavePulse1 size={30} />,
+                icon: (
+                  <CiWavePulse1
+                    size={30}
+                    style={{
+                      background: "#47C2FF",
+                    }}
+                  />
+                ),
                 title: "Vehicles",
                 count: counts.vacancies,
+                colorx: {
+                  background: "#47C2FF",
+                  // replace with your desired hex colors
+                },
                 gradient: "bg-gradient-to-r",
                 style: {
                   backgroundImage:
@@ -64,9 +97,21 @@ const Page = () => {
                 },
               },
               {
-                icon: <LuBarChart2 size={30} />,
+                icon: (
+                  <LuBarChart2
+                    size={30}
+                    style={{
+                      background: "#47C2FF",
+                    }}
+                  />
+                ),
+                color: "text-red-500",
                 title: "Reports",
                 count: counts.getInTouch,
+                colorx: {
+                  background: "#47C2FF",
+                  // replace with your desired hex colors
+                },
                 gradient: "bg-gradient-to-r",
                 style: {
                   backgroundImage:
@@ -74,7 +119,6 @@ const Page = () => {
                 },
               },
               {
-                icon: <RiFolderReceivedFill size={30} />,
                 title: "Requests",
                 count: counts.requests,
                 gradient: "bg-gradient-to-r",
@@ -82,6 +126,18 @@ const Page = () => {
                   backgroundImage:
                     "linear-gradient(to right, #FFB72D, #F38459)", // replace with your desired hex colors
                 },
+                colorx: {
+                  background: "#FFB72D",
+                  // replace with your desired hex colors
+                },
+                icon: (
+                  <RiFolderReceivedFill
+                    size={30}
+                    style={{
+                      background: "#FFB72D",
+                    }}
+                  />
+                ),
               },
             ].map((item, index) => (
               <div
@@ -91,19 +147,20 @@ const Page = () => {
               >
                 <div
                   // key={index}
-                  className={`flex items-center flex-col sm:flex-row gap-4 justify-start ml-3 text-white`}
-                  // style={item.style}
+                  className={`flex items-center flex-col sm:flex-row gap-4 justify-start ml-3 text-white `}
+                  style={item.style}
                 >
                   <div
                     className={`flex flex-col items-start gap-2 justify-start`}
+                    style={item.colorx}
                   >
-                    <span key={index} className={`text-xs`}>
+                    <span className={`font-medium`} style={item.colorx}>
                       {item.title}
                     </span>
-                    <span className="text-start">{item.icon}</span>
+                    <span className={`text-start`}>{item.icon}</span>
                   </div>
-                  <span className="text-2xl">
-                    <stong> $</stong> {item.count}
+                  <span className="text-2xl" style={item.colorx}>
+                    <stong style={item.colorx}> $</stong> {item.count}
                   </span>
                 </div>
               </div>
