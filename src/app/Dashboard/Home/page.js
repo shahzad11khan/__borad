@@ -148,26 +148,37 @@ const Page = () => {
               >
                 <div
                   // key={index}
-                  className={`flex items-center flex-col sm:flex-row gap-4 justify-start ml-3`}
+                  className={`flex items-center flex-col sm:flex-row gap-4 justify-start ml-3 bg-transparent`}
                   style={item.style}
                 >
                   <div
                     className={`flex flex-col items-start gap-2 justify-starttext-white`}
-                    style={item.colorx}
+                    style={{ ...item.colorx, backgroundColor: "transparent" }}
                   >
                     <span
-                      className={`font-medium text-white`}
-                      style={item.colorx}
+                      className={`font-medium text-white`} // Removed bg-transparent, not needed with text color
+                      style={{ ...item.colorx, backgroundColor: "transparent" }} // Ensure the background is transparent
                     >
                       {item.title}
                     </span>
-                    <span className={`text-start text-white`}>{item.icon}</span>
+
+                    <span
+                      className={`text-start text-white`}
+                      style={{ backgroundColor: "transparent" }}
+                    >
+                      {item.icon}
+                    </span>
                   </div>
-                  <span className="text-2xl text-white" style={item.colorx}>
-                    <stong style={item.colorx} className={`text-white`}>
-                      {" "}
-                      $
-                    </stong>{" "}
+                  <span
+                    className="text-2xl text-white"
+                    style={{ ...item.colorx, backgroundColor: "transparent" }}
+                  >
+                    <strong
+                      style={{ ...item.colorx, backgroundColor: "transparent" }} // Corrected spelling from stong to strong
+                      className="text-white" // Added text-white class
+                    >
+                      {" $"}
+                    </strong>{" "}
                     {item.count}
                   </span>
                 </div>
