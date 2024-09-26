@@ -10,10 +10,10 @@ import { FaEdit, FaTrash } from "react-icons/fa";
 import AddPaymentModel from "../AddPayment/AddPaymentModel";
 
 const data = [
-  { id: 1, title: "Conan the Barbarian", year: "1982" },
-  { id: 2, title: "Terminator", year: "1984" },
-  { id: 3, title: "Commando", year: "1985" },
-  { id: 4, title: "Predator", year: "1987" },
+  { id: 1, title: "perday", Payment: "12" },
+  { id: 2, title: "perweek", Payment: "32" },
+  { id: 3, title: "permonth", Payment: "54" },
+  { id: 4, title: "peryear", Payment: "134" },
 ];
 
 const columns = [
@@ -23,7 +23,7 @@ const columns = [
     sortable: true,
   },
   {
-    name: "Year",
+    name: "Payment",
     selector: (row) => row.year,
     sortable: true,
   },
